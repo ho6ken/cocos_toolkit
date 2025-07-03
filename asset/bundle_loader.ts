@@ -49,7 +49,7 @@ export class BundleLoader {
         return new Promise((resolve, reject) => {
             assetManager.loadBundle(name, (err, bundle) => {
                 if (err) {
-                    console.error(`load bundle failed`, name, err);
+                    console.error(`load bundle failed.`, name, err);
                     reject(err);
                 }
 

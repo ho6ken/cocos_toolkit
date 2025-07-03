@@ -82,13 +82,13 @@ export class AssetLoader {
             let loader = opt.bundle ? assetManager.getBundle(opt.bundle) : resources;
 
             if (!loader) {
-                console.error(`load asset failed, loader is null`, opt);
+                console.error(`load asset failed, loader is null.`, opt);
                 reject();
             }
 
             loader.load(opt.path, type, (err, asset) => {
                 if (err) {
-                    console.error(`load asset failed`, opt, err);
+                    console.error(`load asset failed.`, opt, err);
                     reject(err);
                 }
 

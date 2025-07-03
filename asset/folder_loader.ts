@@ -16,13 +16,13 @@ export class FolderLoader {
             let loader = opt.bundle ? assetManager.getBundle(opt.bundle) : resources;
 
             if (!loader) {
-                console.error(`load folder failed, loader is null`, opt);
+                console.error(`load folder failed, loader is null.`, opt);
                 reject();
             }
 
             loader.loadDir(opt.path, type, (err, assets) => {
                 if (err) {
-                    console.error(`load folder failed`, opt, err);
+                    console.error(`load folder failed.`, opt, err);
                     reject(err);
                 }
 
