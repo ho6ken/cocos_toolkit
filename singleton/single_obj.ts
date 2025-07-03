@@ -16,5 +16,5 @@ export interface SingleObj {
     /**
      * 關閉
      */
-    close?(...params: any[]): any;
+    shutdown?(...params: any[]): any;
 }

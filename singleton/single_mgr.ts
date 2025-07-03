@@ -65,11 +65,11 @@ export class SingleMgr {
             return;
         }
 
-        obj.close && obj.close();
+        obj.shutdown && obj.shutdown();
         obj = null;
 
         this._singles.delete(name);
 
-        console.log(`single obj close`, name);
+        console.log(`single obj close.`, name);
     }
 }

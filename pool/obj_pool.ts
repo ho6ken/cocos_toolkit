@@ -25,7 +25,7 @@ export abstract class ObjPool<TK, TV> implements SingleObj {
     /**
      * 關閉
      */
-    public close(): void {
+    public shutdown(): void {
         Array.from(this._pool.keys()).forEach(item => this.clear(item), this);
         this._pool.clear();
     }
