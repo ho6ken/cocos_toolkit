@@ -18,7 +18,7 @@ export abstract class ObjPool<TK, TV> implements SingleObj {
     /**
      * 初始化
      */
-    public init(): void {
+    public init(...params: any[]): void {
         this._pool = new Map();
     }
 
