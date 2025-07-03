@@ -15,7 +15,7 @@ export class SingleMgr {
      * @param type 物件類型
      * @param params 初始化參數
      */
-    public static spawn<T extends SingleObj>(type: SingleType<T>, ...params: any[]): T {
+    public static create<T extends SingleObj>(type: SingleType<T>, ...params: any[]): T {
         if (this._singles.has(type.name)) {
             return this._singles.get(type.name) as T;
         }
