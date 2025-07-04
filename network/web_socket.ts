@@ -12,22 +12,22 @@ export class WSocket implements NetSocket {
     /**
      * 收到訊息
      */
-    public declare onMsg: (buf: NetBuf) => void;
+    public onMsg: (buf: NetBuf) => void = null;
 
     /**
      * 成功連線
      */
-    public declare onConnect: (event: any) => void;
+    public onConnect: (event: any) => void = null;
 
     /**
      * 連線異常
      */
-    public declare onErr: (event: any) => void;
+    public onErr: (event: any) => void = null;
 
     /**
      * 連線中斷
      */
-    public declare onClose: (event: any) => void;
+    public onClose: (event: any) => void = null;
 
     /**
      * 發起連線

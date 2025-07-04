@@ -69,33 +69,33 @@ export class LocalSave {
 
     /**
      * 取數值
-     * @param defValue 預設值
+     * @param defNum 預設值
      */
-    public static getNum(key: string, defValue: number = 0): number {
-        return this.load(key, defValue);
+    public static getNum(key: string, defNum: number = 0): number {
+        return this.load(key, defNum);
     }
 
     /**
      * 取布林
-     * @param defValue 預設值
+     * @param defBool 預設值
      */
-    public static getBool(key: string, defValue: boolean = false): boolean {
-        return this.load(key, defValue);
+    public static getBool(key: string, defBool: boolean = false): boolean {
+        return this.load(key, defBool);
     }
 
     /**
      * 取字串
-     * @param defValue 預設值
+     * @param defStr 預設值
      */
-    public static getStr(key: string, defValue: string = ``): string {
-        return this.load(key, defValue);
+    public static getStr(key: string, defStr: string = ``): string {
+        return this.load(key, defStr);
     }
 
     /**
      * 取json
-     * @param defValue 預設值
+     * @param defObj 預設值
      */
-    public static getJson(key: string, defValue: object = {}): any {
-        return JSON.parse(String(this.load(key, defValue)));
+    public static getJson(key: string, defObj: object = {}): any {
+        return JSON.parse(String(this.load(key, defObj)));
     }
 }
