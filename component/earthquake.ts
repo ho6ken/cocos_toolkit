@@ -12,19 +12,19 @@ export class Earthquake extends Component {
     /**
      * 
      */
-    @property({ displayName: `震動幅度`, type: CCFloat, min: 0.01 })
+    @property({ type: CCFloat, displayName: `震動幅度`, min: 0.01 })
     private power: number = 5;
 
     /**
      * 
      */
-    @property({ displayName: `單次位移時間`, type: CCFloat, min: 0.01 })
+    @property({ type: CCFloat, displayName: `單次位移秒數`, min: 0.01 })
     private sec: number = 0.16;
 
     /**
      * 
      */
-    @property({ displayName: `晃動複雜度`, type: CCInteger, min: 2 })
+    @property({ type: CCInteger, displayName: `晃動複雜度`, min: 2 })
     private complex: number = 8;
 
     /**
