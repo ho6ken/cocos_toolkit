@@ -13,11 +13,24 @@ const { ccclass, property, disallowMultiple, requireComponent, menu } = _decorat
 @menu(`toolkit/adapt_widget`)
 export class AdaptWidget extends Component {
     /**
+     * 原始寬
+     */
+    private _initW: number = 0;
+
+    /**
+     * 原始高
+     */
+    private _initH: number = 0;
+
+    /**
      * 
      */
     protected onLoad(): void {
-        let size = view.getDesignResolutionSize();
-        this.adjust(size.width, size.height);
+        let trans = this.getComponent(UITransform);
+        this._initW = trans.width;
+        this._initH = trans.height;
+
+        this.adjust(); 
 
         screen.on('window-resize', this.adjust, this);
     }
@@ -32,20 +45,23 @@ export class AdaptWidget extends Component {
     /**
      * 校正
      */
-    private adjust(width: number, height: number): void {
-        let transform = this.getComponent(UITransform);
+   private adjust(): void {
+        let viewSize = screen.windowSize;
+        let viewW = viewSize.width;
+        let viewH = viewSize.height;
 
         // 先取得show all模式時, 此節點的實際寬高, 以及初始縮放
         let scale = Math.min(
-            width / transform.width,
-            height / transform.height,
+            viewW / this._initW,
+            viewH / this._initH,
         );
 
-        let realW = transform.width * scale;
-        let realH = transform.height * scale;
+        let realW = this._initW * scale;
+        let realH = this._initH * scale;
 
-        // 基於第一步計算的數據, 再重置節點寬高
-        transform.width *= (width / realW);
-        transform.height *= (height / realH);
+        // 基於第一步計算的數據, 再做節點重置寬高
+        let trans = this.getComponent(UITransform);
+        trans.width = this._initW * (viewW / realW);
+        trans.height = this._initH * (viewH / realH);
     }
 }

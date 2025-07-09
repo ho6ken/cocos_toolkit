@@ -14,6 +14,7 @@ export class SingleMgr {
      * 生成實例
      * @param type 物件類型
      * @param params 初始化參數
+     * @summary 有需要集中管理, 或是額外帶入建構參數時可用
      */
     public static create<T extends SingleObj>(type: SingleType<T>, ...params: any[]): T {
         if (this._singles.has(type.name)) {
@@ -37,7 +38,7 @@ export class SingleMgr {
      * @param type 物件類型
      */
     public static get<T extends SingleObj>(type: SingleType<T>): T {
-        return this._singles.get(type.name) as T;
+        return (this._singles.get(type.name) ?? this.create(type)) as T;
     }
 
     /**

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, screen, UITransform, view } from 'cc';
+import { _decorator, Component, Node, screen, UITransform } from 'cc';
 
 const { ccclass, property, disallowMultiple, requireComponent, menu } = _decorator;
 
@@ -16,9 +16,7 @@ export class AdaptDesktop extends Component {
      * 
      */
     protected onLoad(): void {
-        let size = view.getDesignResolutionSize();
-        this.adjust(size.width, size.height);
-
+        this.adjust();
         screen.on('window-resize', this.adjust, this);
     }
 
@@ -28,28 +26,33 @@ export class AdaptDesktop extends Component {
     protected onDestroy(): void {
         screen.off('window-resize', this.adjust, this);
     }
+    
+   /**
+    * 校正
+    */
+   private adjust(): void {
+        let viewSize = screen.windowSize;
+        let viewW = viewSize.width;
+        let viewH = viewSize.height;
 
-    /**
-     * 校正
-     */
-    private adjust(width: number, height: number): void {
         let trans = this.getComponent(UITransform);
 
         // 先取得show all模式時, 此節點的實際寬高, 以及初始縮放
         let scale = Math.min(
-            width / trans.width,
-            height / trans.height,
+            viewW / trans.width,
+            viewH / trans.height,
         );
 
         let realW = trans.width * scale;
         let realH = trans.height * scale;
 
         // 基於第一步計算的數據, 再做適配縮放
-        let ratio = Math.max(
-            width / realW,
-            height / realH,
-        )
+        scale = Math.max(
+            viewW / realW,
+            viewH / realH,
+        );
 
-        this.node.setScale(ratio, ratio);
+        // 基於第一步計算的數據, 再做適配縮放
+        this.node.setScale(scale, scale);
     }
 }
