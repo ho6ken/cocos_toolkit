@@ -39,6 +39,11 @@ interface Number {
      * 123456789 => 123.47M
      */
     thousand(): string;
+
+    /**
+     * 十進制轉二進制
+     */
+    binary(): string;
 }
 
 /**
@@ -92,4 +97,11 @@ Number.prototype.thousand = function(this: number): string {
     let num = value / Math.pow(k, idx);
 
     return num.toFixed(2) + symbols[idx];
+}
+
+/**
+ * 
+ */
+Number.prototype.binary = function(this: number): string {
+    return this.valueOf().toString(2);
 }

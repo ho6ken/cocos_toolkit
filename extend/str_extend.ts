@@ -21,6 +21,11 @@ interface String {
      * @param str 填補字串 
      */
     padEnd(count: number, str: string): string;
+
+    /**
+     * 二進制轉十進制
+     */
+    decimal(): number;
 }
 
 /**
@@ -60,3 +65,11 @@ String.prototype.padEnd = function(this: string, count: number, str: string): st
         return String(this) + str.slice(0,count);
     }
 }
+
+/**
+ * 
+ */
+String.prototype.decimal = function(this: string): number {
+    return parseInt(this, 2);
+}
+
