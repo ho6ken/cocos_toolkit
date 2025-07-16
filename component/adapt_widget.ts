@@ -33,6 +33,10 @@ export class AdaptWidget extends Component {
         this.adjust(); 
 
         screen.on('window-resize', this.adjust, this);
+        screen.on('orientation-change', this.adjust, this);
+        screen.on('fullscreen-change', this.adjust, this);
+        
+        view.on(`canvas-resize`, this.adjust, this);
     }
 
     /**
@@ -40,6 +44,10 @@ export class AdaptWidget extends Component {
      */
     protected onDestroy(): void {
         screen.off('window-resize', this.adjust, this);
+        screen.off('orientation-change', this.adjust, this);
+        screen.off('fullscreen-change', this.adjust, this);
+
+        view.off(`canvas-resize`, this.adjust, this);
     }
 
     /**

@@ -1,4 +1,4 @@
-import { _decorator, Component, Node, screen, UITransform } from 'cc';
+import { _decorator, Component, screen, UITransform, view } from 'cc';
 
 const { ccclass, property, disallowMultiple, requireComponent, menu } = _decorator;
 
@@ -17,7 +17,12 @@ export class AdaptDesktop extends Component {
      */
     protected onLoad(): void {
         this.adjust();
+
         screen.on('window-resize', this.adjust, this);
+        screen.on('orientation-change', this.adjust, this);
+        screen.on('fullscreen-change', this.adjust, this);
+
+        view.on(`canvas-resize`, this.adjust, this);
     }
 
     /**
@@ -25,8 +30,12 @@ export class AdaptDesktop extends Component {
      */
     protected onDestroy(): void {
         screen.off('window-resize', this.adjust, this);
+        screen.off('orientation-change', this.adjust, this);
+        screen.off('fullscreen-change', this.adjust, this);
+
+        view.off(`canvas-resize`, this.adjust, this);
     }
-    
+
    /**
     * 校正
     */
