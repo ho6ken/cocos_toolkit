@@ -62,7 +62,7 @@ String.prototype.padEnd = function(this: string, count: number, str: string): st
             str += str.repeat(count / str.length);
         }
 
-        return String(this) + str.slice(0,count);
+        return String(this) + str.slice(0, count);
     }
 }
 
