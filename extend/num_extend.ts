@@ -7,7 +7,7 @@ interface Number {
      * @param min 最小值(含)
      * @param max 最大值(含)
      */
-    limit(min: number, max: number): number;
+    limit(min: number, max?: number): number;
 
     /**
      * 是否在兩值間
@@ -49,8 +49,9 @@ interface Number {
 /**
  * 
  */
-Number.prototype.limit = function(this: number, min: number, max: number): number {
+Number.prototype.limit = function(this: number, min: number, max?: number): number {
     let value = this.valueOf();
+    max = max ?? Number.MAX_SAFE_INTEGER;
     return value >= max ? max : (value <= min ? min : value);
 }
 
