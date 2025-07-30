@@ -32,6 +32,12 @@
 
 - str_extend: 字串擴展
 
+## fsm: 狀態機
+
+- fsm_base: 狀態機
+
+- fsm_state: 狀態機狀態
+
 ## network: 網路連線
 
 - net_mgr: 網路管理
