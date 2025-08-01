@@ -14,7 +14,7 @@ export class SpineCtrl extends Component {
     /**
      * spine預設的動畫名稱
      */
-    private static readonly DEF_SPINE_ANIM = `default`;
+    private static readonly _DEF_SPINE_ANIM = `default`;
 
     /**
      * spine anim track
@@ -82,7 +82,7 @@ export class SpineCtrl extends Component {
      * @param key 動畫名稱
      * @param revert 倒敘播放
      */
-    public async play(key: string = SpineCtrl.DEF_SPINE_ANIM, revert: boolean = false): Promise<void> {
+    public async play(key: string = SpineCtrl._DEF_SPINE_ANIM, revert: boolean = false): Promise<void> {
         return await this.doPlay(key, false, revert);
     }
 
@@ -91,7 +91,7 @@ export class SpineCtrl extends Component {
      * @param key 動畫名稱
      * @param revert 倒敘播放
      */
-    public playLoop(key: string = SpineCtrl.DEF_SPINE_ANIM, revert: boolean = false): void {
+    public playLoop(key: string = SpineCtrl._DEF_SPINE_ANIM, revert: boolean = false): void {
         this.doPlay(key, true, revert);
     }
 

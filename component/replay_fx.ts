@@ -13,7 +13,7 @@ export class ReplayFX extends Component {
     /**
      * spine預設的動畫名稱
      */
-    private static readonly DEF_SPINE_ANIM = `default`;
+    private static readonly _DEF_SPINE_ANIM = `default`;
 
     /**
      * 
@@ -93,7 +93,7 @@ export class ReplayFX extends Component {
         this.p2d.forEach(elm => elm.resetSystem());
 
         this.spines.forEach(elm => {
-            elm.setAnimation(99, ReplayFX.DEF_SPINE_ANIM, elm.loop);
+            elm.setAnimation(99, ReplayFX._DEF_SPINE_ANIM, elm.loop);
             elm.node.active = true;
         });
 
